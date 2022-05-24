@@ -46,7 +46,7 @@ export function ingresso (qtdInteira, qtdMeia, nac, diaSemana) {
         calc = (qtdInteira + qtdMeia) * 14.25;
     }
     else {
-        calc = (qtdInteira*28.50) + (qtd*14.25);
+        calc = (qtdInteira*28.50) + (qtdMeia*14.25);
     }
     return calc;
 }
