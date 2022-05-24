@@ -117,10 +117,10 @@ server.get('/dia2/corprimaria/:cor', (req, resp) => {
     }
 })
 
-server.post('/dia2/ingressocinema', (req, resp) => {
+server.post('/dia2/ingresso', (req, resp) => {
     try {
-        const {qtdI, qtdM, Naci, DiaS} = req.body;
-        const x = ingresso(qtdI, qtdM, Naci, DiaS);
+        const {inteira, meia, nacionalidade, diasemana} = req.body;
+        const x = ingresso(inteira, meia, nacionalidade, diasemana);
 
         resp.send({
         total: x
