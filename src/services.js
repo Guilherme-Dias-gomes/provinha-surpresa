@@ -36,7 +36,6 @@ export function CorPrimaria(cor) {
 }
 
 
-
 export function ingresso (qtdInteira, qtdMeia, nac, diaSemana) {
     let calc = 0;
 
