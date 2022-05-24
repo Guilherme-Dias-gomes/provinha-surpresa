@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import {Dobro, Somar, media, Temperatura} from './services.js';
+import {Dobro, Somar, media, Temperatura, CorPrimaria} from './services.js';
 const server = Router();
 
 server.get('/dobro/:n', (req, resp) => {
@@ -101,8 +101,19 @@ server.get('/tabuada', (req, resp) => {
     }
 })
 
+server.get('/dia2/corprimaria/:cor', (req, resp) => {
+    try {
+        const color = req.params.color;
+        const x = CorPrimaria(color);
 
+        resp.send({
+            primaria: x
+        })
+    }
+    catch(err) {
+        erro: err.message
+    }
+})
 
 
 export default server; 
-// fdsjkafljsdklajd

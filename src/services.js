@@ -22,3 +22,21 @@ export function Temperatura(temp) {
 
     return msg;
 }
+export function CorPrimaria(cor) {
+    let msg= true;
+
+    if(cor == "Vermelho" || cor == "Amarelo" || cor == "Azul") {
+        return msg;
+    }
+    else {
+        msg = false;
+    }
+
+    return msg;
+}
+
+
+
+//   || cor == "Vermelha  || cor == "Amarela" 
+//  || cor == "vermelho  || cor == "amarelo" 
+// || cor == "vermelha  || cor == "amarela") 
