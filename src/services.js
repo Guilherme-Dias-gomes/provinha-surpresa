@@ -25,7 +25,7 @@ export function Temperatura(temp) {
 export function CorPrimaria(cor) {
     let msg= true;
 
-    if(cor == "Vermelho" || cor == "Amarelo" || cor == "Azul") {
+    if(    cor == "Vermelho" || cor == "Amarelo" || cor == "Azul"){
         return msg;
     }
     else {
@@ -37,6 +37,17 @@ export function CorPrimaria(cor) {
 
 
 
-//   || cor == "Vermelha  || cor == "Amarela" 
-//  || cor == "vermelho  || cor == "amarelo" 
-// || cor == "vermelha  || cor == "amarela") 
+export function ingresso (qtdInteira, qtdMeia, nac, diaSemana) {
+    let calc = 0;
+
+    if(nac == "Brasileira" || nac == "Brasileiro" || nac == "brasileira" || nac == "brasileiro") {
+        calc = (qtdInteira + qtdMeia) * 5;
+    }
+    else if(diaSemana == "Quarta" || diaSemana == "quarta") {
+        calc = (qtdInteira + qtdMeia) * 14.25;
+    }
+    else {
+        calc = (qtdInteira*28.50) + (qtd*14.25);
+    }
+    return calc;
+}

@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import {Dobro, Somar, media, Temperatura, CorPrimaria} from './services.js';
+import {Dobro, Somar, media, Temperatura, CorPrimaria, ingresso} from './services.js';
 const server = Router();
 
 server.get('/dobro/:n', (req, resp) => {
@@ -103,7 +103,7 @@ server.get('/tabuada', (req, resp) => {
 
 server.get('/dia2/corprimaria/:cor', (req, resp) => {
     try {
-        const color = req.params.color;
+        const color = req.params.cor;
         const x = CorPrimaria(color);
 
         resp.send({
@@ -111,9 +111,25 @@ server.get('/dia2/corprimaria/:cor', (req, resp) => {
         })
     }
     catch(err) {
-        erro: err.message
+        resp.send({
+            erro: err.message
+        })
     }
 })
 
+server.post('/dia2/ingressocinema', (req, resp) => {
+    try {
+        const {qtdI, qtdM, Naci, DiaS} = req.body;
+        const x = ingresso(qtdI, qtdM, Naci, DiaS);
 
+        resp.send({
+        total: x
+        })
+    }
+    catch(err) {
+        resp.send({
+            erro: err.message
+        })
+    }
+})
 export default server; 
