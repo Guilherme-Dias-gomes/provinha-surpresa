@@ -101,10 +101,10 @@ server.get('/tabuada', (req, resp) => {
     }
 })
 
-server.get('/dia2/corprimaria/:cor', (req, resp) => {
+server.get('/dia2/corPrimaria/:cor', (req, resp) => {
     try {
-        const color = req.params.cor;
-        const x = CorPrimaria(color);
+        const cor = req.params.cor;
+        const x = CorPrimaria(cor);
 
         resp.send({
             primaria: x
