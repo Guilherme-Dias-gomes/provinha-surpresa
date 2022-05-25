@@ -50,7 +50,7 @@ export function Tabuada(numero) {
 }
 
 export function MaiorNumero(numero) {
-    let n = 0;
+    let n = Number.MIN_VALUE;
 
     for(let i of numero) {
         if(n < i) 
