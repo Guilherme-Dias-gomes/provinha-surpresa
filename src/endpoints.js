@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import {Dobro, Somar, media, Temperatura, CorPrimaria, ingresso} from './services.js';
+import {Dobro, Somar, media, Temperatura, CorPrimaria, Ingresso, ContarFrequencia, MaiorNumero, Tabuada} from './services.js';
 const server = Router();
 
 server.get('/dobro/:n', (req, resp) => {
@@ -70,7 +70,7 @@ server.post('/media', (req, resp) => {
 
 server.get('/temperatura', (req, resp) => {
     try {
-        const temp = req.query.temp;
+        const temp = Number(req.query.temp);
         const febre = Temperatura(temp);
     
         resp.send({
@@ -86,8 +86,8 @@ server.get('/temperatura', (req, resp) => {
 
 server.get('/tabuada', (req, resp) => {
     try {
-        const number = req.query.number;
-        const calc = Tabuada(number);
+        const numero = Number(req.query.numero);
+        const calc = Tabuada(numero);
     
         resp.send({
             x: calc
@@ -119,11 +119,11 @@ server.get('/dia2/corprimaria/:cor', (req, resp) => {
 
 server.post('/dia2/ingresso', (req, resp) => {
     try {
-        const {inteira, meia, nacionalidade, diasemana} = req.body;
-        const x = ingresso(inteira, meia, nacionalidade, diasemana);
+        const {qtdInteiras, qtdMeias, Nacionalidade, DiaDaSemana} = req.body;
+        const x = Ingresso(qtdInteiras, qtdMeias, Nacionalidade, DiaDaSemana);
 
         resp.send({
-        total: x
+            total: x
         })
     }
     catch(err) {
@@ -133,3 +133,36 @@ server.post('/dia2/ingresso', (req, resp) => {
     }
 })
 export default server; 
+
+server.get('/dia2/frequencia/:texto/:caractere', (req, resp) => {
+    try {
+        const txt = req.params.texto;
+        const crt = req.params.caractere;
+        const x = ContarFrequencia(txt, crt);
+    
+        resp.send({
+            x: x
+        })
+    }
+    catch(err) {
+        resp.send({
+            erro: err.message
+        })
+    }
+})
+
+server.post('/dia2/maiornumero', (req, resp) => {
+    try{
+        const {numeros} = req.body;
+        const result = MaiorNumero(numeros);
+
+        resp.send({
+            x: result
+        })
+    }
+    catch(err) {
+        server.resp({
+            erro: err.message
+        })
+    }
+})

@@ -11,42 +11,62 @@ export function media(n1, n2, n3) {
 }
 
 export function Temperatura(temp) {
-    let msg = true;
-
     if(temp >= 38)
-        return msg;
+        return true;
     
-    else {
-        msg = false;
-    }
-
-    return msg;
+    else 
+        return false;
 }
+
 export function CorPrimaria(cor) {
-    let msg= true;
+    if(cor == "Vermelho" || cor == "Amarelo" || cor == "Azul")
+        return true;
+    
+    else 
+        return false;
 
-    if(    cor == "Vermelho" || cor == "Amarelo" || cor == "Azul"){
-        return msg;
-    }
-    else {
-        msg = false;
-    }
-
-    return msg;
 }
 
 
-export function ingresso (qtdInteira, qtdMeia, nac, diaSemana) {
-    let calc = 0;
+export function Ingresso (qtdInteira, qtdMeia, nac, diaSemana) {
+    if(nac == "Brasileira" || nac == "Brasileiro" || nac == "brasileira" || nac == "brasileiro") 
+        return (qtdInteira + qtdMeia) * 5;
 
-    if(nac == "Brasileira" || nac == "Brasileiro" || nac == "brasileira" || nac == "brasileiro") {
-        calc = (qtdInteira + qtdMeia) * 5;
+    else if(diaSemana == "Quarta" || diaSemana == "quarta") 
+        return (qtdInteira + qtdMeia) * 14.25;
+
+    else 
+        return (qtdInteira*28.50) + (qtdMeia*14.25);
+}
+
+export function Tabuada(numero) {
+    let n = []
+
+    for(let i = 0; i <= 10; i++) {
+        n[i] = numero * i;
     }
-    else if(diaSemana == "Quarta" || diaSemana == "quarta") {
-        calc = (qtdInteira + qtdMeia) * 14.25;
+
+    return n;
+}
+
+export function MaiorNumero(numero) {
+    let n = 0;
+
+    for(let i of numero) {
+        if(n < i) 
+            n = i;
     }
-    else {
-        calc = (qtdInteira*28.50) + (qtdMeia*14.25);
+
+    return n;
+}
+
+export function ContarFrequencia(texto, caractere) {
+    let cont = 0;
+
+    for(let i = 0; i < texto.length; i++) {
+        if(texto[i] == caractere)
+            cont++
     }
-    return calc;
+
+    return cont;
 }
